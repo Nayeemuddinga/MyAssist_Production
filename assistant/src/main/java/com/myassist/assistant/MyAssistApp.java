@@ -1,16 +1,3 @@
 package com.myassist.assistant;
-
-import android.app.Application;
-import com.myassist.assistant.session.SessionManager;
-
-public class MyAssistApp extends Application {
-    private static MyAssistApp instance;
-    private SessionManager session;
-    @Override public void onCreate() {
-        super.onCreate();
-        instance = this;
-        session = new SessionManager(this);
-    }
-    public static MyAssistApp getInstance() { return instance; }
-    public SessionManager session() { return session; }
-}
+import android.app.Application; import com.myassist.assistant.network.ApiClient; import com.myassist.assistant.session.SessionManager;
+public class MyAssistApp extends Application {private static SessionManager session;public void onCreate(){super.onCreate();session=new SessionManager(this);ApiClient.init(session);}public static SessionManager session(){return session;}}
